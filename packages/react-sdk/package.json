@@ -14,11 +14,9 @@
   "devDependencies": {
     "@types/react": "^18.2.70",
     "@types/react-dom": "^18.2.25",
-    "@webstudio-is/template": "workspace:*",
     "@webstudio-is/tsconfig": "workspace:*",
     "react": "18.3.0-canary-14898b6a9-20240318",
     "react-dom": "18.3.0-canary-14898b6a9-20240318",
-    "strip-indent": "^4.0.0",
     "type-fest": "^4.37.0",
     "vitest": "^3.1.2",
     "zod": "^3.24.2"

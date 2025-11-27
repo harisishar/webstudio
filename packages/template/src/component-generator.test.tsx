@@ -20,11 +20,11 @@ import {
   expression,
   renderData,
   ws,
-} from "@webstudio-is/template";
+} from "./jsx";
 import {
   generateJsxChildren,
   generateWebstudioComponent,
-} from "./component-generator";
+} from "@webstudio-is/react-sdk";
 
 const isValidJSX = (code: string): boolean => {
   // Create a "virtual" TypeScript program

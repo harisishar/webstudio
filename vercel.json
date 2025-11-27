@@ -1,5 +1,10 @@
 {
   "git": {
     "deploymentEnabled": false
+  },
+  "functions": {
+    "apps/builder/build/server/index.js": {
+      "runtime": "nodejs20.x"
+    }
   }
 }
