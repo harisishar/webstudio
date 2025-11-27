@@ -3,6 +3,7 @@ import { MaxSize } from "@webstudio-is/asset-uploader";
 import {
   createFsClient,
   createS3Client,
+  createSupabaseClient,
 } from "@webstudio-is/asset-uploader/index.server";
 import env from "~/env/env.server";
 
@@ -10,6 +11,22 @@ export const fileUploadPath = "public/cgi/asset";
 
 export const createAssetClient = () => {
   const maxUploadSize = MaxSize.parse(env.MAX_UPLOAD_SIZE);
+
+  // Supabase Storage (preferred)
+  if (
+    env.SUPABASE_URL !== undefined &&
+    env.SUPABASE_SERVICE_ROLE_KEY !== undefined &&
+    env.SUPABASE_STORAGE_BUCKET !== undefined
+  ) {
+    return createSupabaseClient({
+      supabaseUrl: env.SUPABASE_URL,
+      supabaseKey: env.SUPABASE_SERVICE_ROLE_KEY,
+      bucket: env.SUPABASE_STORAGE_BUCKET,
+      maxUploadSize,
+    });
+  }
+
+  // S3-compatible storage (fallback)
   if (
     env.S3_ENDPOINT !== undefined &&
     env.S3_REGION !== undefined &&
@@ -26,10 +43,11 @@ export const createAssetClient = () => {
       acl: env.S3_ACL,
       maxUploadSize,
     });
-  } else {
-    return createFsClient({
-      maxUploadSize,
-      fileDirectory: path.join(process.cwd(), fileUploadPath),
-    });
   }
+
+  // Filesystem storage (development fallback)
+  return createFsClient({
+    maxUploadSize,
+    fileDirectory: path.join(process.cwd(), fileUploadPath),
+  });
 };

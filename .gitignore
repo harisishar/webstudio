@@ -30,12 +30,13 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-# .env
+.env
 .env.development
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+
 
 # data
 /data
@@ -64,3 +65,4 @@ packages/prisma-client/src/__generated__
 
 .temp
 *.timestamp-*.mjs
+apps/builder/.env

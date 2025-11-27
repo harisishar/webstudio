@@ -3,7 +3,6 @@ import {
   AuthorizationError,
   type AppContext,
 } from "@webstudio-is/trpc-interface/index.server";
-import type { GitHubProfile } from "remix-auth-github";
 import type { GoogleProfile } from "remix-auth-google";
 import { z } from "zod";
 
@@ -80,7 +79,7 @@ const genericCreateAccount = async (
 
 export const createOrLoginWithOAuth = async (
   context: AppContext,
-  profile: GoogleProfile | GitHubProfile
+  profile: GoogleProfile
 ): Promise<User> => {
   const userData = {
     email: (profile.emails ?? [])[0]?.value,

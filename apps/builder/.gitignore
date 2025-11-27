@@ -1,7 +1,9 @@
 .cache
 .vercel
 .output
-
+.env
+.env.local
+.env.production
 /build/
 /public/build
 /api/index.js

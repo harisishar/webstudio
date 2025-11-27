@@ -24,7 +24,12 @@ const env = {
   MAX_UPLOAD_SIZE: process.env.MAX_UPLOAD_SIZE,
   MAX_ASSETS_PER_PROJECT: process.env.MAX_ASSETS_PER_PROJECT,
 
-  // Remote assets
+  // Supabase Storage (preferred)
+  SUPABASE_URL: process.env.SUPABASE_URL,
+  SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
+  SUPABASE_STORAGE_BUCKET: process.env.SUPABASE_STORAGE_BUCKET,
+
+  // Remote assets (S3-compatible fallback)
   S3_ENDPOINT: process.env.S3_ENDPOINT,
   S3_REGION: process.env.S3_REGION,
   S3_ACCESS_KEY_ID: process.env.S3_ACCESS_KEY_ID,
