@@ -3,6 +3,7 @@
   "include": ["app", "**/*.ts", "**/*.tsx", "../../@types/**/*.d.ts"],
 
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "target": "ES2023",
     "types": [
       "@remix-run/node",
